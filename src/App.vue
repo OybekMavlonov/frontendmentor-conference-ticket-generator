@@ -15,7 +15,7 @@ const avatarPreview = computed(() => {
 </script>
 
 <template>
-  <div class="bg-[url('./assets/images/background-desktop.png')] bg-cover bg-center h-full w-screen relative">
+  <div class="bg-[url('./assets/images/background-desktop.png')] bg-cover bg-center h-full w-full relative" :class="{'h-screen': userData}">
     <img src="./assets/images/pattern-lines.svg" alt="lines"
          class="z-0 absolute top-0 left-0 h-screen w-screen pointer-events-none">
     <img src="./assets/images/pattern-circle.svg" alt="circle"
