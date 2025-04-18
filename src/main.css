@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/static/Inconsolate-Regular') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
