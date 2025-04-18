@@ -5,6 +5,7 @@ import {toTypedSchema} from "@vee-validate/yup";
 import {mixed, string, object} from "yup";
 import BaseInput from "../components/ui/BaseInput.vue"
 import Uploader from "../components/ui/Uploader.vue"
+import type {USER_DATA} from "../types.ts"
 
 const formRef = ref()
 
@@ -38,7 +39,7 @@ const {handleSubmit, resetForm} = useForm({
   ),
 });
 
-const generateTicket = handleSubmit((values: any) => {
+const generateTicket = handleSubmit((values: USER_DATA) => {
   emit("onGenerateTicket", values)
   resetForm();
 });

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {useField} from 'vee-validate'
 import {ref} from 'vue'
-import * as yup from 'yup';
 import InfoIcon from "../InfoIcon.vue"
 
 const props = defineProps<{
@@ -12,13 +11,13 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:modelValue'])
 
-const imageUrl = ref<string | null>(null)
+const imageUrl = ref<string | undefined>(undefined)
 
 const { value: avatar, errorMessage, setErrors, setValue } = useField(() => props.name);
 
-function handleFileChange(file: File | null) {
+function handleFileChange(file: File | undefined) {
   if (!file) {
-    imageUrl.value = null
+    imageUrl.value = undefined
     emit('update:modelValue', null)
     return
   }
@@ -46,7 +45,7 @@ function setErrorAndClear(message: string) {
 }
 
 const removeImage = () => {
-  imageUrl.value = null
+  imageUrl.value = undefined
   avatar.value = null
   emit('update:modelValue', null)
 }
@@ -78,7 +77,7 @@ const triggerFileInput = () => {
               accept="image/*"
               class="hidden"
               :name="name"
-              @input="(e) => handleFileChange(e.target.files?.[0])"
+              @input="(e) => handleFileChange((e.target as HTMLInputElement)?.files?.[0])"
           />
 
           <div v-if="!avatar" class="flex flex-col items-center">

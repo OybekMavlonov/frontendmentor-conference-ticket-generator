@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import {computed, ref} from "vue"
 import TicketForm from "./components/TicketForm.vue"
+import type {USER_DATA} from "./types.ts"
 
-const userData = ref()
+const userData = ref<USER_DATA>()
 
-const generateTicket = (values) => {
+const generateTicket = (values: USER_DATA) => {
   userData.value = values
 }
 
 const avatarPreview = computed(() => {
-  return userData.value.avatar ? URL.createObjectURL(userData.value.avatar as File) : ''
+  return userData.value?.avatar ? URL.createObjectURL(userData.value?.avatar as File) : ''
 });
 </script>
 
